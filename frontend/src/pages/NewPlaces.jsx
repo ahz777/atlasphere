@@ -1,5 +1,5 @@
 const NewPlaces = () => {
-  return <div>Hello From NewPlaces</div>;
+  return <form className="place-form"></form>;
 };
 
 export default NewPlaces;
