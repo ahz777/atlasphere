@@ -1,5 +1,5 @@
 import Input from "../components/UI/Input";
-
+import { VALIDATOR_REQUIRE } from "../utils/validators";
 import "./NewPlace.css";
 
 const NewPlaces = () => {
@@ -9,7 +9,7 @@ const NewPlaces = () => {
         element="input"
         type="text"
         label="Title"
-        validators={[]}
+        validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid title."
       />
     </form>
