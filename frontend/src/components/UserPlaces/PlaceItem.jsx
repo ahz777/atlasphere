@@ -1,9 +1,10 @@
-import "./PlaceItem.css";
+import { useState } from "react";
+
 import Card from "../UI/Card";
 import Button from "../UI/Button";
-import { useState } from "react";
 import Modal from "../UI/Modal";
 import Map from "../UI/Map";
+import "./PlaceItem.css";
 
 const PlaceItem = (props) => {
   const [showMap, setShowMap] = useState(false);
@@ -19,8 +20,7 @@ const PlaceItem = (props) => {
         header={props.address}
         contentClass="place-item__modal-content"
         footerClass="place-item__modal-actions"
-        footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
-      >
+        footer={<Button onClick={closeMapHandler}>CLOSE</Button>}>
         <div className="map-container">
           {/* <Map center={props.coordinates} zoom={16}/> */}
           <h4>THE MAP</h4>
@@ -29,7 +29,10 @@ const PlaceItem = (props) => {
       <li className="place-item">
         <Card>
           <div className="place-item__image">
-            <img src={props.image} alt={props.title} />
+            <img
+              src={props.image}
+              alt={props.title}
+            />
           </div>
           <div className="place-item__info">
             <h2>{props.title}</h2>
@@ -37,7 +40,9 @@ const PlaceItem = (props) => {
             <p>{props.description}</p>
           </div>
           <div className="place-item__actions">
-            <Button inverse onClick={openMapHandler}>
+            <Button
+              inverse
+              onClick={openMapHandler}>
               VIEW ON MAP
             </Button>
             <Button to={`/places/${props.id}s`}>EDIT</Button>

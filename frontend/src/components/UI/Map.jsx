@@ -1,5 +1,6 @@
-import "./Map.css";
 import { useEffect, useRef } from "react";
+
+import "./Map.css";
 
 const Map = (props) => {
   const mapRef = useRef();
@@ -21,6 +22,12 @@ const Map = (props) => {
     });
   }, [center, zoom]);
 
-  return <div ref={mapRef} className={`map ${props.className}`} style={props.style} id="map"></div>;
+  return (
+    <div
+      ref={mapRef}
+      className={`map ${props.className}`}
+      style={props.style}
+      id="map"></div>
+  );
 };
 export default Map;

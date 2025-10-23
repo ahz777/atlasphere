@@ -1,8 +1,8 @@
 import { createPortal } from "react-dom";
 import { CSSTransition } from "react-transition-group";
+import { useRef } from "react";
 
 import "./SideDrawer.css";
-import { useRef } from "react";
 
 const SideDrawer = (props) => {
   const nodeRef = useRef(null);
@@ -13,9 +13,11 @@ const SideDrawer = (props) => {
       classNames="slide-in-left"
       mountOnEnter
       unmountOnExit
-      nodeRef={nodeRef}
-    >
-      <aside ref={nodeRef} className="side-drawer" onClick={props.onClick}>
+      nodeRef={nodeRef}>
+      <aside
+        ref={nodeRef}
+        className="side-drawer"
+        onClick={props.onClick}>
         {props.children}
       </aside>
     </CSSTransition>
