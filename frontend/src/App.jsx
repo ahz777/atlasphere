@@ -5,6 +5,7 @@ import Users from "./pages/Users";
 import NewPlace from "./pages/NewPlace";
 import UserPlaces from "./pages/UserPlaces";
 import UpdatePlace from "./pages/UpdatePlace";
+import Auth from "./pages/Auth";
 import "./App.css";
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
             <Route
               path="/places/:placeId"
               element={<UpdatePlace />}
+            />{" "}
+            <Route
+              path="/auth"
+              element={<Auth />}
             />
             <Route
               path="*"
