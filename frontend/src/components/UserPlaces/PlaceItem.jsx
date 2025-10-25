@@ -45,7 +45,7 @@ const PlaceItem = (props) => {
               onClick={openMapHandler}>
               VIEW ON MAP
             </Button>
-            <Button to={`/places/${props.id}s`}>EDIT</Button>
+            <Button to={`/places/${props.id}`}>EDIT</Button>
             <Button danger>DELETE</Button>
           </div>
         </Card>

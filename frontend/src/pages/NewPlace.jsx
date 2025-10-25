@@ -1,36 +1,11 @@
-import { useCallback, useReducer } from "react";
-
 import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../utils/validators";
-import "./NewPlace.css";
+import { useForm } from "../hooks/form-hook";
 
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case "INPUT_CHANGE":
-      let formIsValid = true;
-      for (const inputId in state.inputs) {
-        if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid;
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid;
-        }
-      }
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid },
-        },
-        isValid: formIsValid,
-      };
-    default:
-      return state;
-  }
-};
 const NewPlaces = () => {
-  const [formState, formStateDispatch] = useReducer(formReducer, {
-    input: {
+  const [formState, inputHandler] = useForm(
+    {
       title: {
         value: "",
         isValid: false,
@@ -39,15 +14,15 @@ const NewPlaces = () => {
         value: "",
         isValid: false,
       },
+      address: {
+        value: "",
+        isValid: false,
+      },
     },
-    isValid: false,
-  });
+    false
+  );
 
-  const inputHandler = useCallback((id, value, isValid) => {
-    formStateDispatch({ type: "INPUT_CHANGE", value, isValid, inputId: id });
-  }, []);
-
-  const placeSubmitHandler = (event) => {
+  const newPlaceSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formState.inputs);
   };
@@ -55,7 +30,7 @@ const NewPlaces = () => {
   return (
     <form
       className="place-form"
-      onSubmit={placeSubmitHandler}>
+      onSubmit={newPlaceSubmitHandler}>
       <Input
         id="title"
         element="input"
@@ -66,6 +41,7 @@ const NewPlaces = () => {
       />
       <Input
         id="description"
+        type="text"
         element="textarea"
         label="Description"
         validators={[VALIDATOR_MINLENGTH(5)]}
