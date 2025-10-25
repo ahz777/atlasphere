@@ -1,5 +1,6 @@
 import Card from "../UI/Card.jsx";
 import PlaceItem from "./PlaceItem";
+import Button from "../UI/Button.jsx";
 import "./PlaceList.css";
 
 const PlaceList = (props) => {
@@ -8,7 +9,7 @@ const PlaceList = (props) => {
       <div className="place-list center">
         <Card>
           <h2>No Places found. Maybe create one?</h2>
-          <button>Share Place</button>
+          <Button to="/places/new">Share Place</Button>
         </Card>
       </div>
     );
